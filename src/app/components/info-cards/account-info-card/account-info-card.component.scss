@@ -1,0 +1,49 @@
+nb-card {
+    margin: 0;
+    border-radius: 0;
+}
+
+nb-card-body {
+    padding: 0;
+    padding-top: 0!important;
+    overflow: hidden;
+    height: 100%;
+    background-color: #3F5535;
+    background-image: url('/assets/images/account-info-card-cartoon.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: contain;
+    
+    .container-fluid {
+        padding-left: 30px;
+        color: #eee;
+        
+        .row.logo {
+
+            img {
+                width: 20%;
+            }
+            h1 {
+                color: #fff;
+            }
+        }
+
+        .row.data {
+            font-size: 14px;
+            span {
+                margin-right: 10px;
+
+                img {
+                    margin-right: 3px;
+                    height: 12px;
+                    width: auto;
+                }
+            }
+        }
+
+    }
+    
+}
+
+
+

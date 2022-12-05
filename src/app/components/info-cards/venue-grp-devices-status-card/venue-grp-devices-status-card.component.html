@@ -1,0 +1,127 @@
+<div class="row">
+    <div class="col-12 col-xl-6 col-xxl-3">
+        <nb-card *ngIf="cafeterasGroupByMachine">
+            <nb-card-header>
+                <div class="row">
+                    <div class="col-auto title">Cafeteras</div>
+                </div>
+            </nb-card-header>
+            <nb-card-body>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Fabricante
+                            </th>
+                            <th>
+                                Modelo
+                            </th>
+                            <th>
+                                Existencias
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let el of cafeterasGroupByMachine">
+                            <td>
+                                {{el[0].tipo_maquina.fabricante}}
+                            </td>
+                            <td>
+                                {{el[0].tipo_maquina.modelo}}
+                            </td>
+                            <td>
+                                {{el.length}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </nb-card-body>
+        </nb-card>  
+    </div>
+    <div class="col-12 col-xl-6 col-xxl-3">
+        <nb-card *ngIf="cafeterasGroupByMachine">
+            <nb-card-header>
+                <div class="row">
+                    <div class="col-auto title">Molinos</div>
+                </div>
+            </nb-card-header>
+            <nb-card-body>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Fabricante
+                            </th>
+                            <th>
+                                Modelo
+                            </th>
+                            <th>
+                                Existencias
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let el of molinosGroupByMachine">
+                            <td>
+                                {{el[0].tipo_maquina.fabricante}}
+                            </td>
+                            <td>
+                                {{el[0].tipo_maquina.modelo}}
+                            </td>
+                            <td>
+                                {{el.length}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </nb-card-body>
+        </nb-card>  
+    </div>
+
+
+    <div class="col-12 col-xl-6 col-xxl-3">
+        <nb-card>
+            <nb-card-header>
+                <div class="row">
+                    <div class="col-auto title">Cafeteras</div>
+                </div>
+            </nb-card-header>
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-auto border-right">
+                        <p class="title">Conectadas</p>
+                        <p class="primary-data">{{cafeteras.on}}</p>
+                    </div>
+                    <div class="col-auto">
+                        <p class="title">Desconectadas</p>
+                        <p class="primary-data">{{cafeteras.off}}</p>
+                    </div>
+                </div>	                
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col-12 col-xl-6 col-xxl-3">
+        <nb-card>
+            <nb-card-header>
+                <div class="row">
+                    <div class="col-auto title">Molinos</div>
+                </div>
+            </nb-card-header>
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-auto border-right">
+                        <p class="title">Conectados</p>
+                        <p class="primary-data">{{molinos.on}}</p>
+                    </div>
+                    <div class="col-auto">
+                        <p class="title">Desconectados</p>
+                        <p class="primary-data">{{molinos.off}}</p>
+                    </div>
+                </div>	                
+            </nb-card-body>
+        </nb-card>
+    </div>    
+
+</div>
+
+

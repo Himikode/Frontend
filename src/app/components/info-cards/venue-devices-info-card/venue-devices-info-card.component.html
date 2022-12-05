@@ -1,0 +1,18 @@
+<nb-tabset *ngIf="localizacion">
+
+	<nb-tab *ngFor="let device of localizacion.dispositivos" tabTitle="{{ device.displayName }}">
+
+		<div class="row">
+			<div class="col-12">
+
+				<device-info-card 
+					[dispositivo_info]="device"
+				>
+				</device-info-card>
+				
+			</div>
+		</div>
+	</nb-tab>
+    
+</nb-tabset>
+

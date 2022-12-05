@@ -1,0 +1,39 @@
+a {
+    text-decoration: none;
+}
+
+.company {
+    margin-top: 5px;
+    display: block;
+    font-size: 30px;
+}
+
+.header {
+    svg {
+        margin-bottom: 30px;
+    }
+    p {
+        margin: 0 0 5px 0;
+        font-size: 24px;
+        font-weight: 500;
+    }
+    span {
+        color: blue;
+    }
+}
+
+form {
+    margin-top: 50px;
+}
+
+.forgot-password {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #8f9bb3!important;
+    text-decoration: underline;
+}
+
+.footer {
+    margin-top: 20px;
+}

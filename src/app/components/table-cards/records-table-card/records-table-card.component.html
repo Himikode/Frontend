@@ -1,0 +1,21 @@
+<nb-card>
+	<nb-card-header>
+		<div class="row">
+			<div class="col-auto title">{{title}}</div>
+		</div>
+	</nb-card-header>
+	<nb-card-body>
+
+        <ngx-datatable 
+            class="material"
+            [rows]="rows"
+            [columns]="columns"
+            [columnMode]="ColumnMode.force"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            rowHeight="auto"
+            [limit]="10"            
+        > </ngx-datatable>
+
+	</nb-card-body>
+</nb-card>  

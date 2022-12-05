@@ -1,0 +1,36 @@
+<nb-card>
+	<nb-card-header>
+		<div class="row">
+			<div class="col-auto title">{{title}}</div>
+		</div>
+	</nb-card-header>
+	<nb-card-body>
+
+        <ngx-datatable
+            class="material"
+            [rows]="rows"
+
+            [columnMode]="ColumnMode.flex"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            rowHeight="auto"
+
+            [treeFromRelation]="'agrupacion_id'"
+            [treeToRelation]="'id'"
+            (treeAction)="onTreeAction($event)"
+        >
+            <ngx-datatable-column name="Nombre" [flexGrow]="3" [isTreeColumn]="true">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{ value }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column [prop]="campo.prop" [name]="campo.name" [flexGrow]="1" *ngFor="let campo of campos">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    {{ value }}
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+
+
+	</nb-card-body>
+</nb-card>  

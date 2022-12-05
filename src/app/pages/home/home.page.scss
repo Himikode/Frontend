@@ -1,0 +1,26 @@
+nb-card {
+    nb-card-header {
+        p {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1A1B1C;
+            margin-bottom: 5px;
+            img {
+                margin-right: 3px;
+                height: 14px;
+                width: auto;     
+                filter: invert(0.6);  
+            }
+        }
+        .subtitle {
+            color: #585B61;
+            font-size: 12px;
+            img {
+                height: 10px;
+                filter: invert(0.6);  
+            }
+        }
+    }
+    nb-card-body {
+    }
+}

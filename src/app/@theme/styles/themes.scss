@@ -1,0 +1,13 @@
+// @nebular theming framework
+@import '~@nebular/theme/styles/theming';
+// @nebular out of the box themes
+@import '~@nebular/theme/styles/themes/default';
+@import './themes/hkcoffee';
+
+
+$nb-themes: nb-register-theme((
+    layout-padding-top: 2.25rem,
+    layout-padding: 0,
+    layout-padding-inner: 2.25rem 2.25rem 0.75rem,
+
+), default, default);

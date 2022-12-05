@@ -1,0 +1,28 @@
+<nb-card>
+	<nb-card-body>
+
+        <div class="row" *ngIf="dispositivo">
+            <div class="col-12 col-xl-6">
+
+                <dl>
+                    <dt>Id</dt>
+                    <dd>{{ dispositivo.id_hex }}</dd>
+                    
+                    <dt>Estado</dt>
+                    <dd>{{ dispositivo.estado }} </dd>
+                    
+                    <dt>Fecha de alta</dt>
+                    <dd>{{ dispositivo.alta | date:"medium" }}</dd>
+                </dl>
+
+                
+            </div>
+            <div class="col-12 col-xl-6 text-left text-xl-center text" *ngIf="dispositivo.tipo_maquina">
+                <img src="/assets/images/maquinas/{{ dispositivo.tipo_maquina.pic }}" />
+                <div *ngIf="dispositivo.tipo_maquina" class="text-left text-xl-center">
+                    <em>{{dispositivo.tipo_maquina.fabricante}} {{dispositivo.tipo_maquina.modelo}}</em>
+                </div>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>

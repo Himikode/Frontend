@@ -1,0 +1,380 @@
+<div class="row">
+	<div class="col-12">
+		<account-info-card
+			*ngIf="scope == 'account'"
+			config="calidad"
+			[scope]="scope"
+			[scope_id]="scope_id"	
+		>
+		</account-info-card>
+		<venue-grp-info-card
+			*ngIf="scope == 'venue_grp'"
+			config="calidad"
+			variable="molienda-simple-optima"
+			stat="count"	
+			title="Nº Moliendas simples rango óptimo"
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start"
+			[end]="end"
+			format="1.0-0"
+			[unidades]="{factor: 1, text: 'mol.'}"
+		>
+		</venue-grp-info-card>
+		<venue-info-card
+			*ngIf="scope == 'venue'"
+			config="calidad"
+			[scope]="scope"
+			[scope_id]="scope_id"		
+		>
+		</venue-info-card>
+	</div>	
+</div>
+
+<div class="container-fluid">
+	<div class="row thresholds py-3">
+		<div class="col-12 col-md-4 text-center">
+			Peso de Molienda:
+			<span style="margin-left: 10px;">Simple	8 gr.</span>		
+			<span style="margin-left: 7px;">Doble 15 gr.</span>
+		</div>
+		<div class="col-12 col-md-4 text-center">
+			Volumen de elaboración:
+			<span style="margin-left: 10px;">Corto	25 ml.</span>
+			<span style="margin-left: 7px;">Largo 30 ml.</span>
+		</div>
+		<div class="col-12 col-md-4 text-center">
+			Tiempo de erogación:
+			<span style="margin-left: 10px;">Corto	25 sg.</span>
+			<span style="margin-left: 7px;">Largo 30 sg.</span>
+		</div>
+	</div>
+
+</div>
+
+<!-- IF SCOPE == ACCOUNT -->
+<div class="container-fluid mt-3" *ngIf="scope == 'account'">
+	<h5 class="title-separator">
+		Ranking de calidad
+		<br />
+		<small><em>Número de moliendas simples en rango óptimo</em></small>
+	</h5>
+	<div class="row">
+		<div class="col-12 col-lg-6 order-2 order-lg-1">
+			<ranking-table-card
+				variable="molienda-simple-optima"
+				stat="count"
+				target="venue"
+				title="Establecimientos"
+				[scope]="scope"
+				[scope_id]="scope_id"
+				[start]="start"
+				[end]="end"
+				[unidades]="{factor: 1, text: 'moliendas'}"
+				format="1.0-0"
+			>
+			</ranking-table-card>
+		</div>
+		<div class="col-12 col-lg-6 order-2 order-lg-1">
+			<ranking-table-card
+				variable="molienda-simple-optima"
+				stat="count"
+				target="venue_grp"
+				title="Delegaciones"
+				[scope]="scope"
+				[scope_id]="scope_id"
+				[start]="start"
+				[end]="end"
+				[unidades]="{factor: 1, text: 'moliendas'}"
+				format="1.0-0"
+			>
+			</ranking-table-card>
+		</div>		
+	</div>
+</div>
+
+<!-- IF SCOPE == VENUE_GRP || VENUE -->
+<nb-tabset *ngIf="scope != 'account'">
+
+	<nb-tab tabTitle="Rangos óptimos">
+		<h5 class="title-separator">Totales</h5>
+	    <div class="row">
+			<div class="col-12 col-lg-4">
+				<single-value-card
+					variable="peso-molienda" 
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Moliendas"
+					format="1.0-0"
+					icon="icon-variable-molienda.svg"
+				>
+				</single-value-card>
+		
+			</div>
+			<div class="col-12 col-lg-4">
+				<single-value-card
+					variable="elaboraciones" 
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Elaboraciones"
+					format="1.0-0"
+					icon="icon-variable-elaboraciones.svg"
+				>
+				</single-value-card>			
+			</div>		
+			<div class="col-12 col-lg-4">
+				<relation-card
+					variable="elaboraciones" 
+					variable_base="purgas"
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Limpieza"
+					[unidades]="[{factor: 1, text:'cafés.'}, {factor: 1, text:'purga.'}]"
+					format="1.1-1"
+				>
+      			</relation-card>
+			</div>			
+		</div>
+		<h5 class="title-separator">Pesos de Molienda</h5>
+		<div class="row">
+			<div class="col-xxl-6 col-12 ">
+				<bucket-list-card
+					variable="molienda" 
+					buckets="Peso simple rango optimo;Peso simple debajo de rango;Peso simple encima de rango"
+					stat="group"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Nº Moliendas simples"
+					[unidades]="{factor: 1}"
+					format="1.0-0"
+				>
+				</bucket-list-card>						
+			</div>
+			<div class="col-xxl-6 col-12 ">
+				<bucket-list-card
+					variable="molienda" 
+					buckets="Peso doble rango optimo;Peso doble debajo de rango;Peso doble encima de rango"
+					stat="group"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Nº Moliendas dobles"
+					[unidades]="{factor: 1}"
+					format="1.0-0"
+				>
+				</bucket-list-card>						
+			</div>
+		</div>
+		<h5 class="title-separator">Volumen de elaboración</h5>
+		<div class="row">
+			<div class="col-12 col-xxl-6">
+				<bucket-list-card
+					variable="elaboraciones" 
+					buckets="Volumen corto rango optimo;Volumen corto debajo de rango;Volumen corto encima de rango"
+					stat="group"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Nº Elaboraciones cortas"
+					[unidades]="{factor: 1}"
+					format="1.0-0"
+				>
+				</bucket-list-card>
+			</div>
+			<div class="col-12 col-xxl-6">
+				<bucket-list-card
+					variable="elaboraciones" 
+					buckets="Volumen largo rango optimo;Volumen largo debajo de rango;Volumen largo encima de rango"
+					stat="group"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Nº Elaboraciones largas"
+					[unidades]="{factor: 1}"
+					format="1.0-0"
+				>
+				</bucket-list-card>
+			</div>
+		</div>
+
+		<h5 class="title-separator">Tiempo de erogación</h5>
+		<div class="row">
+			<div class="col-12 col-xxl-6">
+				<bucket-list-card
+					variable="elaboraciones" 
+					buckets="Tiempo corto rango optimo;Tiempo corto debajo de rango;Tiempo corto encima de rango"
+					stat="group"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Nº Elaboraciones cortas"
+					[unidades]="{factor: 1}"
+					format="1.0-0"
+				>
+				</bucket-list-card> 	
+			</div>
+			<div class="col-12 col-xxl-6">
+				<bucket-list-card
+					variable="elaboraciones" 
+					buckets="Tiempo largo rango optimo;Tiempo largo debajo de rango;Tiempo largo encima de rango"
+					stat="group"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Nº Elaboraciones largas"
+					[unidades]="{factor: 1}"
+					format="1.0-0"
+				>
+				</bucket-list-card>
+			</div>
+		</div>				
+
+	</nb-tab>
+
+	<nb-tab tabTitle="Nota calidad cafés cortos">
+		<h5 class="title-separator">Valoración</h5>
+		<div class="row">
+  			<div class="col-12 col-lg-8">
+				<cup-quality-card
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					tipo="corto"
+					title="Valoración media de café corto"
+				>
+				</cup-quality-card>
+			</div>			
+		</div>
+		<h5 class="title-separator">Parámetros medios</h5>
+		<div class="row">
+			<div class="col-12 col-lg-12 col-xxl-4">
+				<bucket-list-card
+					variable="peso-molienda" 
+					buckets="simple;doble"
+					stat="avg"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Peso de molienda"
+					[unidades]="{factor: 1, text:'gr.'}"
+					format="1.1-1"
+				>
+				</bucket-list-card>   				
+			</div>
+			<div class="col-12 col-lg-6 col-xxl-4">
+				<bucket-list-card
+					variable="volumen-elaboracion" 
+					buckets="corto;largo"
+					stat="avg"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Volumen de elaboración"
+					[unidades]="{factor: 1, text:'ml.'}"
+					format="1.1-1"
+				>
+				</bucket-list-card>   				
+			</div>
+			<div class="col-12 col-lg-6 col-xxl-4">
+				<bucket-list-card
+					variable="tiempo-elaboracion" 
+					buckets="corto;largo"
+					stat="avg"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Tiempo de erogación"
+					[unidades]="{factor: 1000, text:'s.'}"
+					format="1.1-1"
+				>
+				</bucket-list-card>   				
+			</div>					
+		</div>		
+	</nb-tab>
+
+	<nb-tab tabTitle="Nota calidad cafés largos">
+		<h5 class="title-separator">Valoración</h5>
+		<div class="row">
+  			<div class="col-12 col-lg-8">
+				<cup-quality-card
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					tipo="largo"
+					title="Valoración media de café largo"
+				>
+				</cup-quality-card>
+			</div>
+		</div>
+		<h5 class="title-separator">Parámetros medios</h5>
+		<div class="row">
+			<div class="col-12 col-lg-12 col-xxl-4">
+				<bucket-list-card
+					variable="peso-molienda" 
+					buckets="simple;doble"
+					stat="avg"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Peso de molienda"
+					[unidades]="{factor: 1, text:'gr.'}"
+					format="1.1-1"
+				>
+				</bucket-list-card>   				
+			</div>
+			<div class="col-12 col-lg-6 col-xxl-4">
+				<bucket-list-card
+					variable="volumen-elaboracion" 
+					buckets="corto;largo"
+					stat="avg"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Volumen de elaboración"
+					[unidades]="{factor: 1, text:'ml.'}"
+					format="1.1-1"
+				>
+				</bucket-list-card>   				
+			</div>
+			<div class="col-12 col-lg-6 col-xxl-4">
+				<bucket-list-card
+					variable="tiempo-elaboracion" 
+					buckets="corto;largo"
+					stat="avg"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start" 
+					[end]="end" 
+					title="Tiempo de erogación"
+					[unidades]="{factor: 1000, text:'s.'}"
+					format="1.1-1"
+				>
+				</bucket-list-card>   				
+			</div>				
+		</div>
+	</nb-tab>
+
+</nb-tabset>

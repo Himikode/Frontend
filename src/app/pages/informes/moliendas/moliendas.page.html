@@ -1,0 +1,91 @@
+<div class="row">   
+
+	<div class="col-12 col-lg-6">
+		<donut-chart-card
+			variable="peso-molienda" 
+			stat="count"
+      [buckets_config]="[
+        {
+          bucket: 'simple',
+          label: 'Simples'
+        },      
+        {
+          bucket: 'doble',
+          label: 'Dobles'
+        }
+      ]"        
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start" 
+			[end]="end" 
+      color_set="frio"
+			title="Tipos molienda"
+		>
+		</donut-chart-card>
+	</div>
+
+	<div class="col-12 col-lg-6">
+    <bucket-list-card
+      variable="peso-molienda" 
+      buckets="simple;doble"
+      stat="count"
+      [scope]="scope"
+      [scope_id]="scope_id"
+      [start]="start" 
+      [end]="end" 
+      title="Moliendas"
+      unidades="ud."
+      format=""
+    >
+    </bucket-list-card>    
+  </div>     
+
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <area-chart-card 
+      variable="peso-molienda" 
+      stat="sum"
+      [buckets_config]="[
+        {
+          bucket: 'simple',
+          label: 'Simple'
+        },      
+        {
+          bucket: 'doble',
+          label: 'Doble'
+        }
+      ]"      
+			buckets_display="stack"
+      [scope]="scope"
+      [scope_id]="scope_id"
+      epoch="day" 
+      ivar="time" 
+      [start]="start" 
+      [end]="end" 
+      title="Consumo"
+      color_set="frio"
+      factor=1000  
+    >
+    </area-chart-card >        
+  </div>
+</div>
+<div class="row">
+
+	<div class="col-12">
+    <series-stats-card
+      variable="peso-molienda" 
+      stat="sum"
+      [scope]="scope"
+      [scope_id]="scope_id"
+      epoch="day" 
+      ivar="time" 
+      [start]="start" 
+      [end]="end" 
+      title="Moliendas"
+      [unidades]="{factor: 1000, text: 'kg.'}"
+    >
+    </series-stats-card>   
+  </div>
+</div>

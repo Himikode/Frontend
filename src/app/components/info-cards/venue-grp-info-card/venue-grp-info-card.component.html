@@ -1,0 +1,77 @@
+<nb-card size="large">
+	<nb-card-body *ngIf="agrupacion">
+        <google-map 
+            id="map"
+            width="100%"
+            [center]="center"
+            [zoom]="zoom"
+            [options]="options"
+            (tilesloaded)="fitMap('tilesLoaded')"
+        >
+            <map-marker
+                #markerHash
+                *ngFor="let marker of markers"
+                [position]="marker.position"
+                [title]="marker.title"
+                (mapClick)="openInfo(markerHash, marker)"
+            >
+            </map-marker>
+            <map-info-window>
+                <div [innerHTML]="infoContent"></div>
+            </map-info-window>
+        
+        </google-map>
+        <div class="over_map d-none d-md-block">
+            <div class="data-inner ">
+                <table *ngIf="config == 'sat'">
+                    <thead>
+                        <tr class="header">
+                            <th></th>
+                            <th>Nombre</th>
+                            <th>Cafeteras</th>
+                            <th>Molinos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="trhover" *ngFor="let loc of agrupacion.localizaciones; index as i" (click)="goto(loc.id)">  
+                            <td>&nbsp;</td>
+                            <td>{{ loc.nombre }} </td>
+                            <td>{{ loc.cafeteras }}</td>
+                            <td>{{ loc.molinos }}</td>
+                        </tr>
+                    </tbody>
+                </table>                
+                <h6 *ngIf="ranking">Ranking&nbsp;&nbsp;<small><em>{{title}}</em></small></h6>
+                <table *ngIf="ranking">
+                    
+                    <!--
+                    <thead>
+                        <tr class="header">
+                            <th>Pos.</th>
+                            <th>Nombre</th>
+                            <th class="text-right">Val.</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    -->
+                    <tbody>
+                        <tr class="trhover" *ngFor="let loc of ranking; index as i" (click)="goto(loc.id)">  
+                            <td class="ord"><span>{{ i+1 }}</span></td>
+                            <td>{{ loc.nombre }} </td>
+                            <td class="text-right">{{ (unidades?.factor ? (loc.value/unidades.factor) : loc.value) | customNumber: format}} <small>{{unidades?.text ? unidades.text : unidades}}</small></td>
+                            <td style="width: 33%; padding-left: 3%;">    
+                                <nb-progress-bar status="primary" size="tiny" [value]="(loc.value/total)*100" status="primary"></nb-progress-bar>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="over_map_name">
+            <img class="venue_grp_icon" src="/assets/images/venue-icon.svg" /> <span>{{ agrupacion.nombre }}, {{ localizaciones_count }} establecimientos</span>
+        </div>
+
+
+	</nb-card-body>
+</nb-card>  
+

@@ -1,0 +1,18 @@
+<nb-card size="tiny" [nbSpinner]="loading">
+	<nb-card-header>
+		<div class="row">
+			<div class="col-auto title">{{title}}</div>
+		</div>
+	</nb-card-header>
+	<nb-card-body>
+		<div class="row">
+			<div class="stat col-auto" [ngClass]="{'border-right': !last}"  *ngFor="let s of stats; ; let last = last">
+				<p class="title">{{s.label}}</p>
+				<p class="primary-data">
+					{{ (unidades?.factor ? (s.value/unidades.factor) : s.value) | customNumber: (s.label.localeCompare("media diaria") ? format_avg : format)}} 
+					<small>{{unidades?.text ? unidades.text : unidades}}</small>
+				</p>
+			</div>
+		</div>		
+	</nb-card-body>
+</nb-card>

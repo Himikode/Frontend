@@ -1,0 +1,45 @@
+<account-info-card
+	*ngIf="usuario"
+	[scope_id]="usuario.cuenta.id"
+>
+</account-info-card>
+
+<div class="container-fluid mt-3">
+
+	<h5 class="title-separator">Delegaciones</h5>
+	<div class="row" *ngIf="cuenta">
+
+		<div class="col-xxxl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let delegacion of cuenta.localizaciones_agrupaciones">
+
+
+			<nb-card size="small">
+				<nb-card-header>
+					<div class="row">
+						<div class="col">
+							<p>{{ delegacion.nombre }}</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col subtitle">
+							{{ delegacion.localizaciones.length }} establecimientos
+						</div>
+					</div>
+				</nb-card-header>
+				<nb-card-body>
+					<div class="row">
+						<div class="col">
+							{{ delegacion.descripcion }}
+						</div>
+					</div>
+				</nb-card-body>
+				<nb-card-footer class="text-right">
+					<nb-icon nbContextMenuTag="{{ 'menu-delegacion-'+delegacion.id }}"  nbContextMenuPlacement="right" [nbContextMenu]="items" icon="more-vertical-outline"></nb-icon>
+				</nb-card-footer>
+			</nb-card>
+
+
+
+		</div>
+
+	</div>
+</div>

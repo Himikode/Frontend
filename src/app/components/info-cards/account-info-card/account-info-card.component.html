@@ -1,0 +1,31 @@
+<nb-card size="small">
+	<nb-card-body *ngIf="cuenta">
+
+        <div class="row h-100">
+
+            <div class="col-md-4 my-auto">
+
+
+                <div class="container-fluid">
+                    <div class="row logo">
+                        <div class="col-12">
+                            <img class="account_logo" src="{{ cuenta.pic ? '/assets/images/accounts/'+cuenta.pic : '/assets/images/accounts/account-info-card-demo-logo.png'}}" />
+                            <h1>{{ cuenta.nombre }}</h1>    
+                        </div>
+                    </div>
+
+                    <div class="row data">
+                        <div class="col-12">
+                            <span>{{ localizaciones_count }} Establecimientos</span>
+                            <span>{{ delegaciones_count }} Delegaciones</span>
+                        </div>
+                    </div>                   
+                </div>
+
+
+            </div>
+
+        </div>
+
+	</nb-card-body>
+</nb-card>  

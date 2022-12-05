@@ -1,0 +1,27 @@
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+@import '../../styles/themes';
+
+@include nb-install-component() {
+
+
+  nb-action {
+    height: auto;
+    display: flex;
+    align-content: center;
+    padding: 6px;
+
+    nb-user {
+      cursor: pointer;
+      margin-bottom: 31px;
+
+      ::ng-deep .user-name {
+        color: #417429!important;
+      }
+    }
+  }
+
+
+
+
+}

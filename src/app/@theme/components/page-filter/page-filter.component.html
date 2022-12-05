@@ -1,0 +1,140 @@
+<div class="page-filter-wrapper" [ngClass]="{'expanded': !expand}" *ngIf="showFilter">
+
+
+    <div class="row">
+        <div class="filter-range col-12 col-md-12 col-lg-4 ml-auto">
+
+            <div class="row">
+                <div class="col hint">
+                    Selecciona un rango temporal
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-auto">
+                    <button
+                        class="datapicker-btn"
+                        nbButton 
+                        shape="semi-round" 
+                        status="info" 
+                        (click)="showDataRangePicker = !showDataRangePicker"
+                    >
+                        <nb-icon icon="calendar-outline"></nb-icon>
+                    </button>
+   
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                        <div class="col caption-2 text-hint">
+                            Ultima act: {{ timeStamp | date: 'HH:mm' }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ selectedRangeText }}
+                        </div>
+                    </div>
+                    <p class="text-center">
+                    </p>
+                </div>
+            </div>
+        </div>    
+        <div class="col-12 col-lg-8">
+            <div class="row">
+                <div class="col hint">
+                    Selecciona el nivel de agrupación
+                </div>
+            </div>            
+            <div class="row">
+                <div id="filter-selector-1" class="filter-selector col-12 col-md-4 col-lg-4 [ngClass]={'border-right': smartFilter}">    
+                    <ng-select 
+                        *ngIf="smartFilter"
+                        [items]="accounts" 
+                        placeholder="Cuentas"
+                        [searchable]="true"
+                        bindLabel="nombre" 
+                        bindValue="id" 
+                        [(ngModel)]="selected.account"
+                        (change)="handleSelect('account', $event)"
+                    >
+                    </ng-select>      
+                    <nb-select 
+                        *ngIf="!smartFilter"
+                        placeholder="Cuentas" 
+                        [(ngModel)]="selected.account"
+                        (selectedChange)="handleSelect('account', $event)" 
+                    >
+                        <nb-option *ngFor="let c of accounts" [value]="c.id">{{c.nombre}}</nb-option>    
+                    </nb-select>          
+                </div>
+                <div id="filter-selector-2" class="filter-selector col-12 col-md-4 col-lg-4 [ngClass]={'border-right': smartFilter}">
+                    <ng-select 
+                        *ngIf="smartFilter"
+                        [items]="venues_grp" 
+                        placeholder="Delegaciones"
+                        [searchable]="true"
+                        bindLabel="nombre" 
+                        bindValue="id" 
+                        [(ngModel)]="selected.venue_grp"
+                        (change)="handleSelect('venue_grp', $event)"
+                    >
+                    </ng-select>
+                    <nb-select 
+                        *ngIf="!smartFilter"
+                        placeholder="Delegaciones" 
+                        [(ngModel)]="selected.venue_grp"
+                        (selectedChange)="handleSelect('venue_grp', $event)" 
+                    >
+                        <nb-option *ngFor="let d of venues_grp" [value]="d.id">{{d.nombre}}</nb-option>    
+                    </nb-select>
+                </div>
+                <div id="filter-selector-3" class="filter-selector col-12 col-md-4 col-lg-4 [ngClass]={'border-right': smartFilter}">
+                    <ng-select 
+                        *ngIf="smartFilter"
+                        [items]="venues" 
+                        placeholder="Venues"
+                        [searchable]="true"
+                        bindLabel="nombre" 
+                        bindValue="id" 
+                        [(ngModel)]="selected.venue"
+                        (change)="handleSelect('venue', $event)"
+                    >
+                    </ng-select>
+                    <nb-select 
+                        *ngIf="!smartFilter"
+                        placeholder="Venues" 
+                        [(ngModel)]="selected.venue"
+                        (selectedChange)="handleSelect('venue', $event)" 
+                    >
+                        <nb-option *ngFor="let l of venues" [value]="l.id">{{l.nombre}}</nb-option>    
+                    </nb-select>
+                </div>
+            </div>
+        </div>           
+        <ngx-daterangepicker-material 
+            #dateRangePicker 
+            (choosedDate)="handleRange($event)"
+            [hidden]="!showDataRangePicker"
+            [autoApply]="true"
+            [ranges]="ranges"
+            [showWeekNumbers]="false"
+            [showISOWeekNumbers]="false"            
+            [alwaysShowCalendars]="true"
+        >
+        </ngx-daterangepicker-material>                   
+    </div>
+    <div class="expand d-block d-lg-none text-center" (click)="toggleExpand()">
+        
+        <div class="row">
+            <div class="col" *ngIf="expand">
+                {{ selectedRangeText }}
+            </div>
+            <div class="col">
+                <nb-icon icon="{{expand ? 'arrow-down':'arrow-up'}}" status=""></nb-icon>
+                {{expand ? 'Desplegar filtro':''}}
+            </div>
+
+        </div>
+    </div>
+</div>

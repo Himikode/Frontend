@@ -1,0 +1,76 @@
+
+<div class="row">
+	<div class="col-12">
+		<account-info-card
+			*ngIf="scope == 'account'"
+			config="sat"
+			[scope]="scope"
+			[scope_id]="scope_id"	
+		>
+		</account-info-card>
+		<venue-grp-info-card
+			*ngIf="scope == 'venue_grp'"
+			config="sat"
+			[scope]="scope"
+			[scope_id]="scope_id"		
+		>
+		</venue-grp-info-card>
+		<venue-info-card
+			*ngIf="scope == 'venue'"
+			config="sat"
+			[scope]="scope"
+			[scope_id]="scope_id"		
+		>
+		</venue-info-card>
+	</div>	
+</div>
+
+<div class="container-fluid mt-3" *ngIf="scope=='account'">
+  <div class="row">
+    <div class="col-12">
+      <account-devices-status-card 
+  			[scope]="scope"
+  			[scope_id]="scope_id"
+      >
+      </account-devices-status-card>
+    </div>
+  </div>  
+</div>
+
+<div class="container-fluid mt-3" *ngIf="scope=='venue_grp'">
+  <div class="row">
+    <div class="col-12">
+      <venue-grp-devices-status-card 
+  			[scope]="scope"
+  			[scope_id]="scope_id"
+      >
+      </venue-grp-devices-status-card>
+    </div>
+  </div>  
+</div>
+
+
+
+<div class="container-fluid mt-3" *ngIf="scope=='venue'">
+
+  <div class="row">
+    <div class="col-12">
+      <venue-devices-info-card 
+  			[scope]="scope"
+  			[scope_id]="scope_id"
+      >
+
+      </venue-devices-info-card>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+

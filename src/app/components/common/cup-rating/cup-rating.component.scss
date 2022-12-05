@@ -1,0 +1,11 @@
+p.rating {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 100%;
+    color: var(--ion-color-dark);
+
+    small {
+        color: var(--ion-color-medium);
+    }
+}

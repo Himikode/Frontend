@@ -1,0 +1,15 @@
+::ng-deep .ngx-datatable.material {
+    box-shadow: none;
+}
+
+nb-card {
+    padding: 0;
+    nb-card-body {
+        padding: 0;
+    }
+}
+
+::ng-deep .ngx-datatable.material .datatable-header .datatable-header-cell,
+::ng-deep .ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
+    padding: 0.9rem 1.5rem;
+}

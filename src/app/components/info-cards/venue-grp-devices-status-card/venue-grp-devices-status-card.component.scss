@@ -1,0 +1,43 @@
+table {
+    width: 100%;
+    thead {
+        tr {
+            border-bottom: 1px solid #ccc;
+            th {
+                margin-bottom: 10px;
+                padding: 5px 10px 15px 0px;
+                font-size: 12px;
+                color: #82868D;
+            }
+        }
+    }
+
+    tbody {
+        tr:first-child {
+            td {
+                padding-top: 25px;
+            }
+        }
+        tr.trhover {
+            cursor: pointer;
+        }
+        td {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 20px;
+            color: #585B61;  
+            padding: 5px 10px 15px 0;
+        }
+        td.ord {
+            span {
+                background-color: #EAECEF;
+                border-radius: 30px;
+                padding: 3px 9px;
+            }
+        }
+        td.progress {
+            width: 33%;
+            padding-left: 5%;
+        }
+    }
+}

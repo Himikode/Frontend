@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-12">
+		<records-table-card
+			index="molinosv1" 
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start" 
+			[end]="end" 
+			[campos]="[
+				{ prop: 'fecha', name: 'Fecha', pipe: customDatetimePipe }, 
+				{ prop: 'peso_molienda', name: 'Peso molienda (gr)', pipe: customNumber},
+				{ prop: 'humedad', name: 'Humedad (%)', pipe: customNumber }, 
+				{ prop: 'temperatura', name: 'Temperatura (º)', pipe: customNumber},
+				{ prop: 'dispositivo_id', name: 'Id dispositivo'}
+			]"
+			title="Registros Molinos"
+			refresh="10"
+		>
+		</records-table-card>    
+	</div>
+</div>

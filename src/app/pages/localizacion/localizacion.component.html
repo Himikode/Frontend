@@ -1,0 +1,69 @@
+
+<div class="row" >
+    <div class="col-12">
+      <nb-card>
+        <nb-card-header *ngIf="localizacion">{{localizacion.nombre}}</nb-card-header>
+        <nb-card-body>
+            <div class="row">
+
+                <div class="col-4" *ngIf="localizacion">
+                    {{localizacion.direccion}}
+                    <br>
+                    {{localizacion.cp}} {{localizacion.ciudad}}
+                </div>
+                <div class="col-4" style="height: 33vh">
+                    <div class="map-container">
+                        <div class="map-frame">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <h6>Datos últimos 30 días</h6>
+                    <table class="table" *ngIf="localizacionData.tipo_servicio">
+                        <tr>
+                            <td>Cafes solos</td>
+                            <td>{{localizacionData.tipo_servicio.cafe_solo}}</td>
+                        </tr>
+                        <tr>
+                            <td>Cafes solo dobles</td>
+                            <td>{{localizacionData.tipo_servicio.cafe_solo_doble}}</td>
+                        </tr>      
+                        <tr>
+                            <td>Cafes c/leche</td>
+                            <td>{{localizacionData.tipo_servicio.cafe_leche}}</td>
+                        </tr>
+                        <tr>
+                            <td>Cafes c/leche doble</td>
+                            <td>{{localizacionData.tipo_servicio.cafe_leche_doble}}</td>
+                        </tr>
+                    </table>
+                    <table class="table" *ngIf="localizacionData.peso_molienda">
+                        <tr>
+                            <td>Kilogramos molidos</td>
+                            <td>{{localizacionData.peso_molienda.sum/1000 | customNumber: '1.2-3'}} kg</td>
+                        </tr>                                                   
+                    </table>
+
+                </div>
+
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h6>Maquinas sensorizadas</h6>
+                    <table class="table" *ngIf="localizacion">
+                        <tr>
+                            <th>id</th>
+                            <th>tipo</th>
+                        </tr>
+                        <tr *ngFor="let disp of localizacion.dispositivos">
+                            <td>#{{disp.id_hex}}</td>
+                            <td>{{disp.tipo_dispositivo.nombre}}</td>
+                        </tr>                                                   
+                    </table>
+                </div>
+            </div>
+        </nb-card-body>
+      </nb-card>    
+    </div>
+  </div>

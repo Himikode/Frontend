@@ -1,0 +1,13 @@
+<div class="row">
+
+  <div size="auto" class="col ion-align-self-center">
+    <img src="assets/images/cup-rating-{{status.cup1}}.svg">
+    <img src="assets/images/cup-rating-{{status.cup2}}.svg">
+    <img src="assets/images/cup-rating-{{status.cup3}}.svg">
+    <img src="assets/images/cup-rating-{{status.cup4}}.svg">
+    <img src="assets/images/cup-rating-{{status.cup5}}.svg">
+  </div>
+  <div class="col ion-align-self-center" *ngIf="rating>0">
+    <p class="rating ion-padding-start">{{rating | number: '1.1-1'}} <small>/ 5</small></p>
+  </div>
+</div>

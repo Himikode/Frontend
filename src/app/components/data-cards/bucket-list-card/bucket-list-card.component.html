@@ -1,0 +1,15 @@
+<nb-card size="tiny" [nbSpinner]="loading">
+	<nb-card-header>
+		<div class="row">
+			<div class="col-auto title">{{title}}</div>
+		</div>
+	</nb-card-header>
+	<nb-card-body>
+		<div class="row">
+			<div class="col-auto" [ngClass]="{'border-right': !last}"  *ngFor="let b of buckets_data; ; let last = last">
+				<p class="title">{{b.bucket}}</p>
+				<p class="primary-data">{{ (unidades?.factor ? (b.value/unidades.factor) : b.value) | customNumber: format}} <small *ngIf="unidades.text">{{unidades?.text ? unidades.text : unidades}}</small></p>
+			</div>
+		</div>		
+	</nb-card-body>
+</nb-card>

@@ -1,0 +1,65 @@
+<div class="row">
+	<div class="col-12 col-lg-6">
+		<bucket-list-card
+			variable="moliendas-carracha" 
+			buckets="simple;doble"
+			stat="count"
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start" 
+			[end]="end" 
+			title="Moliendas"
+			unidades="un."
+			format=""
+		>
+		</bucket-list-card>
+	</div>
+	<div class="col-12 col-lg-6">
+		<bucket-list-card
+			variable="elaboraciones-carracha" 
+			buckets="corto;largo"
+			stat="group"
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start" 
+			[end]="end" 
+			title="Elaboraciones"
+			unidades="un."
+			format=""
+		>
+		</bucket-list-card>  		
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12 col-xl-6 col-xxl-4">
+	  <relation-card
+		variable="elaboraciones-carracha" 
+		variable_base="purgas-carracha"
+		stat="count"
+		[scope]="scope"
+		[scope_id]="scope_id"
+		[start]="start" 
+		[end]="end" 
+		title="Limpieza"
+		unidades="ud.;purga"
+		format="1.1-1"
+		[factor]="1"
+	  >
+	  </relation-card>
+	</div> 
+	<div class="col-12 col-lg-4">
+		<single-value-card
+			variable="purgas-carracha" 
+			stat="count"
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start" 
+			[end]="end" 
+			title="Purgas"
+			format="1.0-0"
+			[unidades]="{factor: 1, text: 'ud.'}"
+		>
+		</single-value-card>
+	</div>	
+</div>

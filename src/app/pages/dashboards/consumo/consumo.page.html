@@ -1,0 +1,616 @@
+<div class="row">
+	<div class="col-12">
+		<account-info-card
+			*ngIf="scope == 'account'"
+			config="consumo"
+			[scope]="scope"
+			[scope_id]="scope_id"
+		>
+		</account-info-card>
+		<venue-grp-info-card
+			*ngIf="scope == 'venue_grp'"
+			variable="peso-molienda"
+			stat="sum"
+			title=""
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start"
+			[end]="end"
+			format="1.2-2"
+			[unidades]="{factor: 1000, text: 'kg.'}"
+		>
+		</venue-grp-info-card>
+		<venue-info-card
+			*ngIf="scope == 'venue'"
+			config="consumo"
+			[scope]="scope"
+			[scope_id]="scope_id"
+		>
+		</venue-info-card>
+	</div>
+</div>
+
+<div class="container-fluid mt-3" *ngIf="scope == 'account'">
+	<h5 class="title-separator">Ranking de Consumos</h5>
+	<div class="row">
+		<div class="col-12 col-lg-6 order-2 order-lg-1">
+			<ranking-table-card
+				variable="peso-molienda"
+				stat="sum"
+				target="venue"
+				title="Establecimientos"
+				[scope]="scope"
+				[scope_id]="scope_id"
+				[start]="start"
+				[end]="end"
+				[unidades]="{factor: 1000, text: 'kg.'}"
+				format="1.2-2"
+			>
+			</ranking-table-card>
+		</div>
+		<div class="col-12 col-lg-6 order-1 order-lg-2">
+			<ranking-table-card
+				variable="peso-molienda"
+				stat="sum"
+				target="venue_grp"
+				title="Delegaciones"
+				[scope]="scope"
+				[scope_id]="scope_id"
+				[start]="start"
+				[end]="end"
+				[unidades]="{factor: 1000, text: 'kg.'}"
+				format="1.2-2" 
+			>
+			</ranking-table-card>
+		</div>		
+	</div>
+</div>
+
+
+
+
+<nb-tabset *ngIf="scope != 'account'">
+
+	<nb-tab tabTitle="Desviación">
+		<h5 class="title-separator">Totales</h5>
+	  	<div class="row">
+			<div class="col-12 col-lg-4">
+				<deviation-card
+					variables="elaboraciones;peso-molienda"
+					variable_names="Elaboraciones;Moliendas"
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+					title="Desviación"
+				>
+				</deviation-card>
+			</div>
+			<div class="col-12 col-lg-4">
+				<single-value-card
+					variable="elaboraciones"
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+					title="Elaboraciones"
+					format="1.0-0"
+					icon="icon-variable-elaboraciones.svg"
+				>
+				</single-value-card>
+			</div>
+			<div class="col-12 col-lg-4">
+				<single-value-card
+					variable="peso-molienda"
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+					title="Moliendas"
+					format="1.0-0"
+					icon="icon-variable-molienda.svg"
+				>
+				</single-value-card>
+			</div>
+		</div>
+	</nb-tab>
+
+	<nb-tab tabTitle="Kgs y latas">
+		<h5 class="title-separator">Totales</h5>
+		<div class="row">
+			<div class="col-12 col-xl-7 col-xxl-8">
+				<div class="row">
+					<div class="col-12 col-xxl-6">
+						<single-value-card-last-period
+						  variable="peso-molienda"
+						  stat="sum"
+						  [scope]="scope"
+						  [scope_id]="scope_id"
+						  [start]="start"
+						  [end]="end"
+						  title="Kilos"
+						  [unidades]="{factor: 1000}"
+						  icon="icon-variable-peso-molienda.svg"
+						>
+						</single-value-card-last-period>
+					</div>
+					<div class="col-12 col-xxl-6">
+						<single-value-card-last-period
+						  variable="latas"
+						  stat="sum"
+						  [scope]="scope"
+						  [scope_id]="scope_id"
+						  [start]="start"
+						  [end]="end"
+						  title="Latas"
+						  icon="icon-variable-latas.svg"
+						>
+						</single-value-card-last-period>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-xl-5 col-xxl-4" *ngIf="scope == 'venue'">
+				<donut-chart-card
+					variable="peso-molienda"
+					stat="sum"
+					[buckets_config]="[
+						{
+							bucket: 'simple',
+							label: 'Simples'
+						},
+						{
+							bucket: 'doble',
+							label: 'Dobles'
+						}
+					]"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+			  		color_set="verde"
+					title="Kilos molidos por tipo de Molienda"
+					factor="1000"
+				>
+				</donut-chart-card>
+			</div>
+		</div>
+		<h5 class="title-separator">Serie temporal</h5>
+		<div class="row">
+			<div class="col-12">
+				<bar-chart-card
+					variable="peso-molienda"
+					stat="sum"
+					[buckets_config]="[
+						{
+						bucket: 'simple',
+						label: 'Simple'
+						},
+						{
+						bucket: 'doble',
+						label: 'Doble'
+						}
+					]"
+					buckets_display="stack"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					epoch="day"
+					ivar="time"
+					[start]="start"
+					[end]="end"
+					title="Kilos molidos por tipo de Molienda"
+					color_set="verde"
+					factor=1000
+				>
+			 	 </bar-chart-card >
+			</div>
+		</div>
+	</nb-tab>
+
+	<nb-tab tabTitle="Elaboraciones">
+		<h5 class="title-separator">Totales</h5>
+		<div class="row">
+			<div class="col-12 col-xl-6 col-xxl-5">
+				<single-value-card-last-period
+					variable="elaboraciones"
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+					title="Elaboraciones"
+					[unidades]="{factor: 1}"
+					format="1.0-0"
+					icon="icon-variable-elaboraciones.svg"
+				>
+				</single-value-card-last-period>
+			</div>
+			<div class="col-12 col-xl-6 col-xxl-5" *ngIf="scope=='venue'">
+				<donut-chart-card
+				  variable="grupos" 
+				  stat="group"
+				  buckets="grupo 1;grupo 2;grupo 3"
+				  [buckets_config]="[
+					{
+					  bucket: 'grupo 1',
+					  label: 'Grupo 1'
+					},      
+					{
+					  bucket: 'grupo 2',
+					  label: 'Grupo 2'
+					},
+					{
+					  bucket: 'grupo 3',
+					  label: 'Grupo 3'
+					}
+				  ]"       
+				  [scope]="scope"
+				  [scope_id]="scope_id"
+				  [start]="start" 
+				  [end]="end" 
+				  title="Pulsaciones por Grupo"
+				  color_set="verde"
+				>
+				</donut-chart-card>  
+			  </div>			
+		</div>
+		<h5 class="title-separator">Totales por tipología</h5>
+		<div class="row">
+			<div class="col-12 col-md-6 col-lg-4 col-xxl-2">
+				<single-value-buckets-sum-card
+					variable="elaboraciones"
+					buckets="corto;corto custom"
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+					title="Cortos"
+					[unidades]="{factor: 1}"
+					format="1.0-0"
+				>
+				</single-value-buckets-sum-card>
+			</div>
+			<div class="col-12 col-md-6 col-lg-4 col-xxl-2">
+				<single-value-buckets-sum-card
+					variable="elaboraciones"
+					buckets="largo;largo custom"
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+					title="Largos"
+					[unidades]="{factor: 1}"
+					format="1.0-0"
+				>
+				</single-value-buckets-sum-card>
+			</div>		
+			<div class="col-12 col-md-6 col-lg-4 col-xxl-2">
+				<single-value-buckets-sum-card
+					variable="elaboraciones"
+					buckets="corto doble;corto doble custom"
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+					title="Cortos dobles"
+					[unidades]="{factor: 1}"
+					format="1.0-0"
+				>
+				</single-value-buckets-sum-card>
+			</div>
+			<div class="col-12 col-md-6 col-lg-4 col-xxl-2">
+				<single-value-buckets-sum-card
+					variable="elaboraciones"
+					buckets="largo doble;largo doble custom"
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+					title="Largos dobles"
+					[unidades]="{factor: 1}"
+					format="1.0-0"
+				>
+				</single-value-buckets-sum-card>
+			</div>
+			<div class="col-12 col-md-6 col-lg-4 col-xxl-2">
+				<single-value-card
+					variable="elaboraciones"
+					bucket="a medida"
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+					title="A medida"
+					[unidades]="{factor: 1}"
+					format="1.0-0"
+				>
+				</single-value-card>
+			</div>	
+			<div class="col-12 col-md-6 col-lg-4 col-xxl-2">
+				<single-value-card
+				  variable="purgas" 
+				  stat="count"
+				  [scope]="scope"
+				  [scope_id]="scope_id"
+				  [start]="start" 
+				  [end]="end" 
+				  title="Purgas"
+				  format="1.0-0"
+				  [unidades]="{factor: 1}"
+				>
+				</single-value-card>
+			  </div>			
+		</div>
+		<h5 class="title-separator">Serie temporal</h5>
+
+		<div class="row">
+			<div class="col-12">
+				<!--
+				<bar-chart-card
+					variable="elaboraciones"
+					stat="count"
+					[buckets_config]="[
+						{
+							bucket: 'corto',
+							label: 'corto',
+							stack: 'pepe',
+							color_set: 'frio'
+						},
+						{
+							bucket: 'corto doble',
+							label: 'corto doble',
+							stack: 'pepe',
+							color_set: 'frio'
+						},
+						{
+							bucket: 'corto custom',
+							label: 'corto custom',
+							stack: 'pepe',
+							color_set: 'frio'
+						},
+						{
+							bucket: 'corto doble custom',
+							label: 'corto doble custom',
+							stack: 'pepe',
+							color_set: 'frio'
+						},
+						{
+							bucket: 'largo',
+							label: 'largo',
+							stack: 'pepe2',
+							color_set: 'verde'
+						},
+						{
+							bucket: 'largo doble',
+							label: 'largo doble',
+							stack: 'pepe2',
+							color_set: 'verde'
+						},
+						{
+							bucket: 'largo custom',
+							label: 'largo custom',
+							stack: 'pepe2',
+							color_set: 'verde'
+						},
+						{
+							bucket: 'largo doble custom',
+							label: 'largo doble custom',
+							stack: 'pepe2',
+							color_set: 'verde'
+						}
+					]"
+					buckets_display="stack"
+					stacked="true"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					epoch="day"
+					ivar="time"
+					[start]="start"
+					[end]="end"
+					title="Elaboraciones"
+					color_set="frio2"
+					showTable="true"
+				>
+				</bar-chart-card>
+				-->
+				<bar-chart-card
+					variable="elaboraciones"
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					epoch="day"
+					ivar="time"
+					[start]="start"
+					[end]="end"
+					title=""
+					color_set="verde"
+					showTable="true"
+				>
+				</bar-chart-card>				
+			</div>
+		</div>
+		<!--
+		<div class="row" *ngIf="scope == 'venue'">
+			<div class="col-12 col-lg-6">
+				<donut-chart-card
+					variable="elaboraciones"
+					stat="group"
+					[buckets_config]="[
+						{
+							bucket: 'corto',
+							label: 'corto'
+						},
+						{
+							bucket: 'corto doble',
+							label: 'corto doble'
+						},
+						{
+							bucket: 'corto custom',
+							label: 'corto custom'
+						},
+						{
+							bucket: 'corto doble custom',
+							label: 'corto doble custom'
+						}
+					]"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+					color_set="verde"
+					title="Cafés cortos"
+				>
+				</donut-chart-card>
+			</div>
+			<div class="col-12 col-lg-6">
+				<donut-chart-card
+					variable="elaboraciones"
+					stat="group"
+					[buckets_config]="[
+						{
+							bucket: 'largo',
+							label: 'largo'
+						},
+						{
+							bucket: 'largo doble',
+							label: 'largo doble'
+						},
+						{
+							bucket: 'largo custom',
+							label: 'largo custom'
+						},
+						{
+							bucket: 'largo doble custom',
+							label: 'largo doble custom'
+						}
+					]"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+					color_set="calido"
+					title="Cafés largos"
+				>
+				</donut-chart-card>
+			</div>
+		</div>
+		-->
+
+	</nb-tab>
+
+	<nb-tab tabTitle="Moliendas">
+		<h5 class="title-separator">Totales</h5>
+		<div class="row">
+			<div class="col-12 col-xl-6 col-xxl-5">
+				<single-value-card-last-period
+					variable="peso-molienda"
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+					title="Moliendas"
+					format=""
+					icon="icon-variable-molienda.svg"
+				>
+				</single-value-card-last-period> 				
+			</div>
+
+			<div class="col-12 col-xl-6 col-xxl-5">
+				<bucket-list-card
+					variable="peso-molienda"
+					buckets="simple;doble"
+					stat="count"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+					title="Moliendas por tipología"
+					format=""
+				>
+				</bucket-list-card>
+			</div>
+		</div>
+		<h5 class="title-separator">Serie temporal</h5>
+		<div class="row">
+			<div class="col-12">
+				<bar-chart-card
+					variable="peso-molienda"
+					stat="count"
+					[buckets_config]="[
+					{
+						bucket: 'simple',
+						label: 'Simple'
+					},
+					{
+						bucket: 'doble',
+						label: 'Doble'
+					}
+					]"
+						buckets_display="stack"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					epoch="day"
+					ivar="time"
+					[start]="start"
+					[end]="end"
+					title="Nº de Moliendas por tipología"
+					color_set="verde"
+					factor=1
+				>
+				</bar-chart-card >
+			</div>
+		</div>
+	</nb-tab>
+
+	<nb-tab tabTitle="Litros">
+		<h5 class="title-separator">Totales</h5>
+		<div class="row">
+			<div class="col-12 col-xl-6 col-xxl-5">
+				<single-value-card-last-period
+					variable="caudal"
+					stat="sum"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					[start]="start"
+					[end]="end"
+					title="Litros de agua"
+					[unidades]="{factor: 1000}"
+					format="1.2-2"
+					icon="icon-variable-caudal.svg"
+				>
+				</single-value-card-last-period>
+			</div>
+		</div>
+		<h5 class="title-separator">Serie temporal</h5>
+		<div class="row">
+			<div class="col-12">
+				<bar-chart-card
+					variable="caudal"				
+					stat="sum"
+					[scope]="scope"
+					[scope_id]="scope_id"
+					epoch="day"
+					ivar="time"
+					[start]="start"
+					[end]="end"
+					title="Litros de agua"
+					color_set="verde"
+					factor=1000
+				>
+				</bar-chart-card >
+			</div>
+		</div>
+	</nb-tab>
+
+
+</nb-tabset>
+
+

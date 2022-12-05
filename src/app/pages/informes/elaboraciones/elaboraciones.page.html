@@ -1,0 +1,247 @@
+<div class="row">
+	<div class="col-12 col-lg-6">
+		<donut-chart-card
+			variable="elaboraciones" 
+			stat="group"
+			[buckets_config]="[
+				{
+					bucket: 'corto',
+					label: 'corto'
+				},
+				{
+					bucket: 'corto doble',
+					label: 'corto doble'
+				},
+				{
+					bucket: 'corto custom',
+					label: 'corto custom'
+				},
+				{
+					bucket: 'corto doble custom',
+					label: 'corto doble custom'
+				}
+			]"			
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start" 
+			[end]="end" 
+			color_set="verde"
+			title="Cafés cortos"
+		>
+		</donut-chart-card>
+	</div>
+	<div class="col-12 col-lg-6">
+		<donut-chart-card
+			variable="elaboraciones" 
+			stat="group"
+			[buckets_config]="[
+				{
+					bucket: 'largo',
+					label: 'largo'
+				},
+				{
+					bucket: 'largo doble',
+					label: 'largo doble'
+				},
+				{
+					bucket: 'largo custom',
+					label: 'largo custom'
+				},
+				{
+					bucket: 'largo doble custom',
+					label: 'largo doble custom'
+				}
+			]"			
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start" 
+			[end]="end" 
+			color_set="verde"
+			title="Cafés largos"
+		>
+		</donut-chart-card>
+	</div>	
+</div>
+<div class="row">
+	<div class="col-12">
+		<bar-chart-card 
+			variable="elaboraciones" 
+			stat="count"
+			[buckets_config]="[
+				{
+					bucket: 'corto',
+					label: 'corto',
+					stack: 'cortos',
+					color_set: 'verde'
+				},
+				{
+					bucket: 'corto doble',
+					label: 'corto doble',
+					stack: 'cortos',
+					color_set: 'verde'
+				},
+				{
+					bucket: 'corto custom',
+					label: 'corto custom',
+					stack: 'cortos',
+					color_set: 'verde'
+				},
+				{
+					bucket: 'corto doble custom',
+					label: 'corto doble custom',
+					stack: 'cortos',
+					color_set: 'verde'
+				},
+				{
+					bucket: 'largo',
+					label: 'largo',
+					stack: 'largos',
+					color_set: 'calido'
+				},
+				{
+					bucket: 'largo doble',
+					label: 'largo doble',
+					stack: 'largos',
+					color_set: 'calido'
+				},
+				{
+					bucket: 'largo custom',
+					label: 'largo custom',
+					stack: 'largos',
+					color_set: 'calido'
+				},
+				{
+					bucket: 'largo doble custom',
+					label: 'largo doble custom',
+					stack: 'largos',
+					color_set: 'calido'
+				}
+			]"
+			buckets_display="stack"
+			stacked="true"
+			[scope]="scope"
+			[scope_id]="scope_id"
+			epoch="day" 
+			ivar="time" 
+			[start]="start" 
+			[end]="end" 
+			title="Elaboraciones"
+			color_set="verde"
+			showTable="true"
+		>
+		</bar-chart-card>        
+	</div>
+</div>
+<div class="row">
+	<div class="col-12">
+		<series-stats-card
+			variable="elaboraciones" 
+			stat="count"
+			[scope]="scope"
+			[scope_id]="scope_id"
+			epoch="day" 
+			ivar="time" 
+			[start]="start" 
+			[end]="end" 
+			title="Elaboraciones"
+			[unidades]="{factor: 1, text: 'ud.'}"
+			format="1.0-0"
+		>
+		</series-stats-card>   
+	</div>
+</div>
+<div class="row">
+	<div class="col-12 col-lg-6">
+		<single-value-buckets-sum-card
+			variable="elaboraciones" 
+			buckets="corto;corto doble"
+			stat="count"
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start" 
+			[end]="end" 
+			title="Cafés cortos"
+			[unidades]="{factor: 1, text: 'ud.'}"
+			format="1.0-0"
+		>
+		</single-value-buckets-sum-card>
+	</div>
+	<div class="col-12 col-lg-6">
+		<single-value-buckets-sum-card
+			variable="elaboraciones" 
+			buckets="largo;largo doble"
+			stat="count"
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start" 
+			[end]="end" 
+			title="Cafés largos"
+			[unidades]="{factor: 1, text: 'ud.'}"
+			format="1.0-0"
+		>
+		</single-value-buckets-sum-card>
+	</div>
+
+	<div class="col-12 col-lg-4">
+		<single-value-buckets-sum-card
+			variable="elaboraciones" 
+			buckets="corto custom;corto doble custom"
+			stat="count"
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start" 
+			[end]="end" 
+			title="Cafés cortos a medida"
+			[unidades]="{factor: 1, text: 'ud.'}"
+			format="1.0-0"
+		>
+		</single-value-buckets-sum-card>
+	</div>
+	<div class="col-12 col-lg-4">
+		<single-value-buckets-sum-card
+			variable="elaboraciones" 
+			buckets="largo custom;largo doble custom"
+			stat="count"
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start" 
+			[end]="end" 
+			title="Cafés largos a medida"
+			[unidades]="{factor: 1, text: 'ud.'}"
+			format="1.0-0"
+		>
+		</single-value-buckets-sum-card>
+	</div>
+	<div class="col-12 col-lg-4">
+		<single-value-card
+			variable="elaboraciones" 
+			bucket="a medida"
+			stat="count"
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start" 
+			[end]="end" 
+			title="Café a medida"
+			[unidades]="{factor: 1, text: 'ud.'}"
+			format="1.0-0"
+		>
+		</single-value-card>
+	</div>
+</div>
+<div class="row">
+	<div class="col-12 col-lg-6">
+		<single-value-buckets-sum-card
+			variable="elaboraciones-auto" 
+			buckets="largo"
+			stat="count"
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start" 
+			[end]="end" 
+			title="Cafés largos / Auto"
+			[unidades]="{factor: 1, text: 'ud.'}"
+			format="1.0-0"
+		>
+		</single-value-buckets-sum-card>
+	</div>
+</div>

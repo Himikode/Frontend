@@ -1,0 +1,264 @@
+$theme: (
+
+  /**
+   * Sass map contains a list of all Theme variables and also their mappings into Component variables
+   * A theme consists of a list of colors, backgrounds, borders, text styles and supporting variables.
+   */
+
+
+  /* Status colors: primary, success, info, warning, danger - for colored elements (buttons, etc) */
+
+ 
+  header-background-color: #504640,
+  header-text-color: #fff,
+  header-text-font-weight: 700,
+  header-shadow: 0 1px 0 0 #D5D2EC,
+
+  layout-padding-top: 2.25rem,
+  layout-padding: 0,
+  layout-padding-inner: 2.25rem 2.25rem 0.75rem,
+  layout-background-color	: #D5D2EC,
+
+
+  menu-item-icon-margin: 0 0.5rem 0 0,
+  menu-text-font-family: font-family-secondary,
+  menu-item-hover-text-color: #418650,
+  menu-item-icon-hover-color: #418650,	
+  menu-item-active-text-color: #418650,	
+  menu-item-icon-active-color: #418650,	
+  menu-submenu-item-hover-text-color: #418650,	
+  menu-submenu-item-icon-hover-color: #418650,	
+  menu-submenu-item-active-border-color: #418650,	
+  menu-submenu-item-active-text-color: #418650,	
+  menu-submenu-item-icon-active-color: #418650,	
+  menu-submenu-item-active-hover-border-color: #418650,	
+  menu-submenu-item-active-hover-text-color: #418650,	
+  menu-submenu-item-icon-active-hover-color: #418650,	
+
+  
+  sidebar-background-color: #F7F2E1,
+  sidebar-shadow: 'none',  
+  //sidebar-shadow: inset -1px 0 0 0 #D5D2EC, /* inset hace que funcione al reves */
+  footer-shadow: 0 -1px 0 0 #D5D2EC, /* Border right */
+
+
+  card-header-text-font-size: 1rem,
+  card-header-text-font-weight: 600,	
+  card-header-text-font-family: font-family-secondary,
+  card-header-text-color: #121026,
+
+
+  card-padding: 1rem 1.5rem 1rem 1.5rem,	
+  card-margin-bottom: 1.5rem,
+  card-header-with-select-padding-top: 0.5rem,
+  card-header-with-select-padding-bottom: 0.5rem,
+
+  card-height-tiny: 10rem,
+  card-height-small: 15rem,
+  card-height-medium: 20rem,
+  card-height-large: 28rem,
+
+  card-divider-color: basic-color-100, rgba(255,255,255,0.95)
+
+  select-min-width: 6rem,
+
+
+
+
+  //font-family-primary: 'Open Sans',
+  //font-family-secondary: 'Inter',
+  font-family-primary: 'Commissioner',
+  font-family-secondary: 'Commissioner',
+
+
+  tabset-tab-active-text-color: #428852,
+  tabset-tab-active-underline-color: #428852,	
+  tabset-tab-underline-width: 0.2rem,
+  
+  text-heading-1-font-weight: 600,     
+  text-heading-2-font-weight: 600,     
+  text-heading-3-font-weight: 600,
+  text-heading-4-font-weight: 600,
+  text-heading-5-font-weight: 600,
+  text-heading-6-font-weight: 600,
+
+
+
+  user-picture-box-background-color: #fff,
+  user-initials-text-color: #0033cc,
+  user-initials-text-font-family: font-family-secondary,
+  user-initials-text-font-weight: 700,
+  user-name-text-color: #fff,
+  user-name-text-font-family: font-family-secondary,
+
+  progress-bar-tiny-height: 0.5rem,
+  progress-bar-primary-filled-background-color: #428852
+
+);
+
+$nb-themes: nb-register-theme($theme, hkcoffee, default);
+
+
+
+/* Background image */
+.layout-container .content {
+  background-color: #FBFBF8;
+}
+
+nb-layout-column {
+  padding: 0!important;
+
+  .one-column-page-filter-inner {
+    padding: 0!important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  nb-layout-column {
+    padding: 1rem 0.5rem!important;
+
+    .one-column-page-filter-inner {
+      padding: 0!important;
+    }
+  }
+}
+
+.nb-theme-hkcoffee .header-container .sidebar-toggle {
+  color: #fff!important;
+}
+
+/* Custom styles cards */
+
+.nb-theme-hkcoffee nb-card,
+.nb-theme-hkcoffee nb-reveal-card {
+  background-color: white;
+  border-radius: 5px;
+  margin: 5px;
+  border: 0!important;
+  overflow: hidden;
+  nb-card-header {
+    padding-bottom: 5px;
+    small {
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 51px;
+      color: nb-theme(color-basic-900);
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), #0033CC;
+      background: #d9e1f7;
+    }
+  }
+  nb-card-body {
+    padding-top: 10px;
+    overflow: hidden;
+
+    .border-right {
+      border-right: 1px solid #dee2e6 !important
+    }
+
+    .primary-data {
+      font-family: nb-theme(font-family-secondary);
+      font-size: 2.2rem;
+      font-weight: 600;
+      line-height: 2.25rem;
+      small {
+        font-weight: 600;
+        font-size: 65%;
+      }
+    }
+    .secondary-data {
+      font-family: nb-theme(font-family-secondary);
+      font-size: 1.8rem;
+      font-weight: 600;
+      line-height: 2.25rem;
+      color: #7A7798;
+      small {
+        font-weight: 600;
+        font-size: 65%;
+      }
+    }
+    .primary-data.no-title {
+      margin-top: 17px;
+    }
+    .title {
+      font-family: nb-theme(font-family-secondary);
+      font-style: normal;
+      font-weight: normal;
+      font-size: 0.8rem;
+      line-height: 16px;
+      margin-bottom: 5px;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .nb-theme-hkcoffee nb-reveal-card,
+  .nb-theme-hkcoffee nb-card.size-small, 
+    .nb-theme-hkcoffee nb-card.size-tiny {
+      height: auto!important;
+  }
+  .nb-theme-hkcoffee nb-reveal-card {
+    height: auto!important;
+
+    .second-card-container {
+      overflow: scroll!important;
+    }
+  }
+
+
+  .nb-theme-hkcoffee nb-card nb-card-body .border-right {
+    border-right: none!important;
+  }
+}
+
+/* Filter en oneolumn filter */
+.nb-theme-hkcoffee nb-layout-header {
+  z-index: 20000!important; //por encima del 9999 spinner
+}
+.nb-theme-hkcoffee nb-layout-header.andromeda-page-filter {
+  background-color: transparent;
+ 
+  nav {
+    padding: 0;
+    height: auto;
+    andromeda-page-filter {
+      width: 100%;
+    }
+  }
+}
+
+.cdk-overlay-container {
+  z-index: 50000!important; //tiene que ir por encima de los headers para el menu de usuario
+}
+.title-separator {
+  margin-left: 15px;
+}
+
+
+/* Datatables NGX */
+
+.datatable-row-wrapper {
+  border-bottom: 1px solid #D5D2EC;
+}
+.datatable-row-wrapper:last-child {
+  border-bottom: 0px;
+}
+
+.datatable-row-wrapper:nth-child(2n){
+  background-color: #F9F9FC;
+}
+
+.datatable-row-wrapper:nth-child(2n+1){
+  background-color: white;
+}
+
+.datatable-row-wrapper datatable-body-cell .datatable-body-cell-label {
+  border-right: 1px solid #D5D2EC;
+}
+.datatable-row-wrapper datatable-body-cell:last-child .datatable-body-cell-label {
+  border-right: 0px;
+}
+
+.datatable-body-cell-label button {
+  background-color: transparent;
+  border-width: 0px;
+}
+

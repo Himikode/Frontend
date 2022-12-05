@@ -1,0 +1,21 @@
+<nb-card size="tiny" [nbSpinner]="loading">
+	<nb-card-header>
+		<div class="row">
+			<div class="col-auto title">{{title}}</div>
+		</div>
+	</nb-card-header>
+	<nb-card-body>
+		<div class="row">
+			<div class="col-auto border-right">
+				<!--<p class="primary-data no-title">{{value | customNumber: format}} <small>{{ unidades_splitted[0] }}</small></p>-->
+				<p class="primary-data no-title">{{ (unidades[0]?.factor ? (value/unidades[0].factor) : value) | customNumber: format}} <small *ngIf="unidades[0].text">{{unidades[0]?.text ? unidades[0].text : unidades}}</small></p>
+
+			</div>
+			<div class="col">
+				<p class="title"><br></p>
+				<!--<p class="secondary-data">{{value_base }} <small>{{ unidades_splitted[1] }}</small></p>-->
+				<p class="secondary-data">{{ (unidades[1]?.factor && value_base ? (value_base/unidades[1].factor) : value_base)}} <small *ngIf="unidades[1].text">{{unidades[1]?.text ? unidades[1].text : unidades}}</small></p>
+			</div>
+		</div>
+	</nb-card-body>
+</nb-card>  

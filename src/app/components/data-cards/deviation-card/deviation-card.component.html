@@ -1,0 +1,42 @@
+<nb-reveal-card [nbSpinner]="loading">
+    <nb-card-front>
+        <nb-card size="tiny">
+            <nb-card-header>
+                <div class="row">
+                    <div class="col-auto title">
+                        {{title}}
+                    </div>
+                </div>
+              </nb-card-header>                  
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-auto">
+                        <p *ngIf="fraud_percent>-1000000000" class="primary-data no-title {{fraud_level_class}}">{{fraud_percent | customNumber: '1.2-2'}}<small>%</small> <span class="fraud_text">{{fraud_text}}</span></p>
+                        <p *ngIf="fraud_percent==-1000000000" class="primary-data no-title">-</p>
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </nb-card-front>
+    <nb-card-back>
+        <nb-card size="tiny">
+            <nb-card-header>
+                <div class="row">
+                    <div class="col-auto title">{{title}}</div>
+                </div>
+            </nb-card-header>                   
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-auto border-right">
+                        <p class="title">{{variable_names_splitted[0]}}</p>
+                        <p class="primary-data">{{value_1 | customNumber: format}} <small>{{unidades_splitted[0]}}</small></p>
+                    </div>
+                    <div class="col-auto">
+                        <p class="title">{{variable_names_splitted[1]}}</p>
+                        <p class="primary-data">{{value_2 | customNumber: format}} <small>{{unidades_splitted[0]}}</small></p>
+                    </div>
+                </div>            
+            </nb-card-body>
+        </nb-card>
+    </nb-card-back>
+</nb-reveal-card>

@@ -1,0 +1,23 @@
+
+<div class="row">
+	<div class="col-12">
+		<records-table-card
+			index="cafeterasv1"
+			[scope]="scope"
+			[scope_id]="scope_id"
+			[start]="start"
+			[end]="end"
+			[campos]="[
+			{ prop: 'fecha', name: 'Fecha', pipe: customDatetimePipe },
+			{ prop: 'tipo_servicio', name: 'Tipo elaboración', pipe: serviceTypeTranslatePipe},
+			{ prop: 'tiempo_servicio', name: 'Tiempo (ms)', pipe: customNumber},
+			{ prop: 'grupo', name: 'Grupo'},
+			{ prop: 'volumen', name: 'Volumen (ml)', pipe: customNumber},
+			{ prop: 'dispositivo_id', name: 'Id dispositivo'}
+			]"
+			title="Registros Cafeteras"
+			refresh="10"
+		>
+		</records-table-card>
+	</div>
+</div>

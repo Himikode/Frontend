@@ -1,0 +1,46 @@
+<nb-card size="small" [nbSpinner]="loading">
+	<nb-card-header>
+		<div class="row">
+			<div class="col-auto title">
+				{{title}}
+			</div>
+		</div>
+	</nb-card-header>
+	<nb-card-body>
+
+		<cup-rating [rating]="rate"></cup-rating>
+		<p>Adecuación a rango óptimo</p>
+		<div class="row  partial-rating" *ngIf="!error">
+			<div class="col my-auto">
+				<nb-progress-bar size="tiny" [status]="progressColor(peso_molienda_rate)" [value]="peso_molienda_rate"></nb-progress-bar>
+			</div>
+			<div class="col">
+				Peso de molienda
+			</div>
+		</div>
+		<div class="row  partial-rating" *ngIf="!error">
+			<div class="col my-auto">
+				<nb-progress-bar size="tiny" [status]="progressColor(tiempo_servicio_rate)" [value]="tiempo_servicio_rate"></nb-progress-bar>
+			</div>
+			<div class="col">
+				Tiempo de erogación
+			</div>
+		</div>
+		<div class="row partial-rating" *ngIf="!error">
+			<div class="col my-auto">
+				<nb-progress-bar size="tiny" [status]="progressColor(volumen_agua_rate)" [value]="volumen_agua_rate"></nb-progress-bar>
+			</div>
+			<div class="col">
+				Volumen de elaboración
+			</div>
+		</div>
+
+		<div class="col" *ngIf="error">
+			<div class="col">
+				{{error}}
+			</div>
+		</div>
+
+
+	</nb-card-body>
+</nb-card>

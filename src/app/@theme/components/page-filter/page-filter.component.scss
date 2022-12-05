@@ -1,0 +1,138 @@
+@import '../../../@theme//styles/themes';
+
+.page-filter-wrapper {
+    padding: nb-theme(layout-padding-inner);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: white;
+    color: #121026;
+    width: 100%;
+    z-index: 20000;
+    border-bottom: 1px solid #E8E9ED;
+    box-shadow: 0 0.5rem 1rem 0 rgb(44 51 73 / 10%);
+    box-shadow: none;
+
+    nb-select {
+        width: 100%;
+        max-width: 100%;
+    }    
+    .datapicker-btn {
+        background-color: #2F2589;
+    }
+}
+
+.hint {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 24px;
+    color: #8f9bb3;
+    padding-bottom: 15px;
+}
+
+.filter-selector {
+
+
+    ng-select {
+        z-index: 15000;
+        ng-dropdown-panel {
+            z-index: 16000;
+        }
+    }
+}
+
+.datapicker-btn {
+    background-color: #428852!important;
+    border: 1px solid #428852!important;
+    nb-icon {
+        background-color: #428852!important;
+    }
+}
+.datapicker-btn:hover {
+    background-color: #52a966!important;
+    nb-icon {
+        background-color: #52a966!important;
+    }    
+}
+
+#filter-selector-1 {
+    z-index: 13000;
+}
+#filter-selector-2 {
+    z-index: 12000;
+}
+#filter-selector-3 {
+    z-index: 11000;
+}
+
+
+ngx-daterangepicker-material {
+    position: absolute;
+    left: 0;
+    top: 82px;
+    z-index: 10001;
+}
+    
+::ng-deep  ngx-daterangepicker-material td {
+    font-weight: 300;
+}
+
+    ng-select {
+    z-index: 10001;
+    padding-bottom: 0em;
+}
+
+::ng-deep ng-dropdown-panel.ng-dropdown-panel.ng-select-bottom {
+    top: calc(100% + 0.25em);
+}
+
+::ng-deep .ng-select .ng-select-container:after {
+    border: none;
+}
+::ng-deep .ng-select.ng-select-single .ng-select-container .ng-clear-wrapper {
+    bottom: 12px ;
+}
+
+::ng-deep .ng-select.ng-select-single .ng-select-container .ng-arrow-wrapper {
+    bottom: 15px;
+}
+
+
+
+
+@media only screen and (max-width: 991px) {
+    div.filter-range {
+        margin-top: 14px;
+        margin-left: 0!important;
+    }    
+}
+
+@media only screen and (max-width: 991px) {
+    .page-filter-wrapper {
+          .filter-selector {
+            margin-bottom: 7px;
+
+            nb-select {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+        .filter-range {
+            margin-top: 7px;
+        }         
+    }
+
+    .page-filter-wrapper.expanded {
+        & > .row {
+            height: auto;
+            display: flex;
+        }
+    }
+    .page-filter-wrapper {
+        & > .row {
+            height: 0;
+            display: none;
+        }
+    }
+
+
+  }

@@ -1,0 +1,45 @@
+<nb-card size="small">
+	<nb-card-body 
+        class="venue-info" 
+        *ngIf="localizacion" 
+        [ngStyle]="{'background-image': localizacion.pic ? 'url(/assets/images/venues/'+localizacion.pic+')' : 'url(/assets/images/venue-info-card-bg.png)' }"
+    >
+        
+        <div class="container-fluid data">
+
+            <div class="row">
+    
+                <div class="col-4 my-auto">
+                    <h3 class="">
+                        <img class="" src="/assets/images/venue-icon.svg" />
+                        {{ localizacion.nombre }}
+                    </h3>
+                </div>
+                <div class="col-3 my-auto">
+                    <dl>
+                        <dt>
+                            Delegación
+                        </dt>
+                        <dd>
+                            {{ localizacion.localizaciones_agrupaciones[0].nombre }}
+                        </dd>
+                    </dl>    
+                </div>
+                <div class="col-5 my-auto">
+                    <dl>
+                        <dt>
+                            Dirección
+                        </dt>
+                        <dd>
+                            {{ localizacion.direccion }} ({{ localizacion.ciudad }})
+                        </dd>
+                    </dl>
+                </div>
+    
+    
+            </div>
+        </div>
+
+
+	</nb-card-body>
+</nb-card>  

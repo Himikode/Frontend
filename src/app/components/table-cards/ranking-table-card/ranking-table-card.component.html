@@ -1,0 +1,31 @@
+<nb-card [nbSpinner]="loading">
+	<nb-card-header>
+		<div class="row">
+			<div class="col-auto title">{{title}}</div>
+		</div>
+	</nb-card-header>
+	<nb-card-body>
+
+        <table *ngIf="ranking">
+            <thead>
+                <tr class="header">
+                    <th>Top</th>
+                    <th>Nombre</th>
+                    <th class="text-right"></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="trhover" *ngFor="let loc of ranking; index as i" (click)="goto(loc.id)">  
+                    <td class="ord"><span>{{ i+1 }}</span></td>
+                    <td>{{ loc.nombre }} </td>
+                    <td class="text-right">{{ (unidades?.factor ? (loc.value/unidades.factor) : loc.value) | customNumber: format}} <small>{{unidades?.text ? unidades.text : unidades}}</small></td>
+                    <td style="width: 33%; padding-left: 3%;">    
+                        <nb-progress-bar status="primary" size="tiny" [value]="(loc.value/total)*100" status="primary"></nb-progress-bar>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+	</nb-card-body>
+</nb-card>  

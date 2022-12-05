@@ -1,0 +1,27 @@
+@import '../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+@import "~leaflet/dist/leaflet.css";
+
+
+
+.map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .map-frame {
+    border: 2px solid black;
+    height: 100%;
+  }
+  
+  #map {
+    height: 100%;
+  }
+
+::ng-deep .advanced-pie-legend .legend-items-container .legend-items {overflow: initial !important; line-height: 1.5rem;}
+::ng-deep .advanced-pie-legend .total-value {line-height: 2.2rem}
+::ng-deep .advanced-pie-legend .legend-items-container .legend-items .legend-item .item-label {margin-top: -2px!important;}
